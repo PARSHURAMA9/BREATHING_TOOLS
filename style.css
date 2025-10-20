@@ -1,0 +1,292 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    color: #fff;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.controls {
+    margin-bottom: 2rem;
+}
+
+.control-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #e0e0e0;
+    font-size: 0.9rem;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #4CAF50;
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.start {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+}
+
+.stop {
+    background: linear-gradient(135deg, #f44336, #da190b);
+    color: white;
+}
+
+.reset {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+    color: white;
+}
+
+/* Breathing Display */
+.breathing-display {
+    margin: 2rem 0;
+    position: relative;
+}
+
+.circle-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* All circles will be absolutely positioned and centered */
+.circle-base {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+/* Outer circle - end circumference */
+.end-circle {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    width: 240px; /* Default end diameter */
+    height: 240px;
+}
+
+/* Inner circle - start circumference */
+.start-circle {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    width: 80px; /* Default start diameter */
+    height: 80px;
+}
+
+/* Breathing circle - animated */
+.breathing-circle {
+    background: #4CAF50;
+    opacity: 0.7;
+    transition: all 0.1s linear;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.5);
+    width: 80px; /* Default start diameter */
+    height: 80px;
+}
+
+/* Instruction display */
+.instruction {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    z-index: 10;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Time display */
+.time-display {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    z-index: 10;
+}
+
+.status {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.status.breathing-in {
+    background: rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+    border-color: rgba(76, 175, 80, 0.3);
+}
+
+.status.breathing-out {
+    background: rgba(244, 67, 54, 0.2);
+    color: #f44336;
+    border-color: rgba(244, 67, 54, 0.3);
+}
+
+.cycle-counter {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: rgba(33, 150, 243, 0.2);
+    border-radius: 10px;
+    font-weight: 600;
+    color: #2196F3;
+    display: inline-block;
+    border: 1px solid rgba(33, 150, 243, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 1.5rem;
+    }
+    
+    .circle-container {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .end-circle {
+        width: 200px; /* Adjusted for mobile */
+        height: 200px;
+    }
+    
+    .instruction {
+        font-size: 1.3rem;
+    }
+    
+    .time-display {
+        font-size: 1.1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 200px;
+    }
+}
+
+@media (max-width: 400px) {
+    .circle-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .end-circle {
+        width: 160px; /* Further adjusted for small mobile */
+        height: 160px;
+    }
+    
+    .instruction {
+        font-size: 1.1rem;
+    }
+    
+    .time-display {
+        font-size: 1rem;
+    }
+    
+    .control-group {
+        gap: 0.8rem;
+    }
+}

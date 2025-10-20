@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathing Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🌬️ Breathing Tool</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <div class="input-group">
+                    <label for="timeInput">Breath Cycle Time (seconds):</label>
+                    <input type="number" id="timeInput" placeholder="Seconds" min="1" value="5" step="0.5">
+                </div>
+                
+                <div class="input-group">
+                    <label for="startRadius">Start Radius (px):</label>
+                    <input type="number" id="startRadius" placeholder="Start radius" min="10" max="100" value="40">
+                </div>
+                
+                <div class="input-group">
+                    <label for="endRadius">End Radius (px):</label>
+                    <input type="number" id="endRadius" placeholder="End radius" min="50" max="140" value="120">
+                </div>
+            </div>
+            
+            <div class="buttons">
+                <button id="startBtn" class="btn start">Start Breathing</button>
+                <button id="stopBtn" class="btn stop" disabled>Stop</button>
+                <button id="resetBtn" class="btn reset">Reset</button>
+            </div>
+        </div>
+
+        <div class="breathing-display">
+            <div class="circle-container">
+                <!-- All circles use circle-base for perfect centering -->
+                <div class="circle-base end-circle"></div>
+                <div class="circle-base start-circle"></div>
+                <div class="circle-base breathing-circle" id="breathingCircle"></div>
+                
+                <!-- Instruction display in center -->
+                <div class="instruction" id="instruction">Ready</div>
+                <!-- Time display -->
+                <div class="time-display" id="timeDisplay">5.0s</div>
+            </div>
+        </div>
+
+        <div class="status" id="status">Press Start to begin breathing exercise</div>
+        
+        <div class="cycle-counter">
+            Breath Cycles: <span id="cycleCount">0</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
